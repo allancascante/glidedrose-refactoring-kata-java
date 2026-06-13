@@ -16,17 +16,17 @@ class BackstagePassUpdater implements ItemUpdater {
     public void update(Item item) {
         UpdaterSupport.increaseQuality(item);
 
-        if (item.sellIn < 11) {
+        if (item.getSellIn() < 11) {
             UpdaterSupport.increaseQuality(item);
         }
 
-        if (item.sellIn < 6) {
+        if (item.getSellIn() < 6) {
             UpdaterSupport.increaseQuality(item);
         }
 
         UpdaterSupport.decreaseSellIn(item);
 
-        if (item.sellIn < 0) {
+        if (item.getSellIn() < 0) {
             UpdaterSupport.resetQuality(item);
         }
     }

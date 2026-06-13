@@ -18,7 +18,7 @@ class ConjuredItemUpdater implements ItemUpdater {
         UpdaterSupport.decreaseQualityBy(item, DEGRADATION);
         UpdaterSupport.decreaseSellIn(item);
 
-        if (item.sellIn < 0) {
+        if (item.getSellIn() < 0) {
             UpdaterSupport.decreaseQualityBy(item, DEGRADATION);
         }
     }

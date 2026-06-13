@@ -16,7 +16,7 @@ class NormalItemUpdater implements ItemUpdater {
         UpdaterSupport.decreaseQuality(item);
         UpdaterSupport.decreaseSellIn(item);
 
-        if (item.sellIn < 0) {
+        if (item.getSellIn() < 0) {
             UpdaterSupport.decreaseQuality(item);
         }
     }

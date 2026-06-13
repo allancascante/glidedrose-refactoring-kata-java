@@ -1,15 +1,20 @@
 package com.gildedrose;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Representa un ítem del inventario de Gilded Rose.
  */
+@Getter
+@Setter
 public class Item {
 
-    public String name;
+    private String name;
 
-    public int sellIn;
+    private int sellIn;
 
-    public int quality;
+    private int quality;
 
     /**
      * Construye un ítem con su nombre, días para vender y calidad.
