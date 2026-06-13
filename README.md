@@ -75,14 +75,9 @@ Esta sección documenta los principales problemas de mantenibilidad en `GildedRo
     - Actualizar las pruebas para que usen los nombres registrados solamente.
     - Crear pruebas para proteger la implementacion de la clase con el registry. 
 
-5. **Mejorar la encapsulación de `Item`**
+5. **Mejorar la encapsulación de `Item`** TBD
     - Hacer los campos privados y exponer comportamiento/getters controlados.
     - Proteger invariantes dentro de `Item` o en métodos de dominio dedicados.
 
-### Estructura objetivo sugerida
-
-- `GildedRose`: iterar ítems y delegar.
-- Interfaz `ItemUpdater`: `update(Item item)`.
-- Actualizadores concretos por regla.
-- `ItemUpdaterFactory` opcional para resolver el actualizador por tipo de ítem.
-
+### Referencias
+Tomado de https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/main/Java
