@@ -1,5 +1,3 @@
-package com.gildedrose;
-
 import lombok.Getter;
 import lombok.Setter;
 
