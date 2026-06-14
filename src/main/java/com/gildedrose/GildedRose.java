@@ -1,12 +1,9 @@
 package com.gildedrose;
 
-/**
- * Orquesta la actualización diaria de calidad y fecha de venta para el inventario.
- */
+
 class GildedRose {
     Item[] items;
-    private static final ItemUpdaterRegistry UPDATER_REGISTRY = new ItemUpdaterRegistry();
-
+    
     /**
      * Crea una instancia de la aplicación con el inventario dado.
      *
@@ -16,12 +13,10 @@ class GildedRose {
         this.items = items;
     }
 
-    /**
-     * Ejecuta la actualización diaria para todos los ítems.
-     */
+    //Update Quality se simplifica por la nueva jerarquía aplicada
     public void updateQuality() {
-        for (Item item : items) {
-            UPDATER_REGISTRY.resolve(item).update(item);
-        }
+    for (Item item : items) {
+        item.update();
     }
+}
 }

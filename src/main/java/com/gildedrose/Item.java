@@ -8,7 +8,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class Item {
+public abstract class Item {
 
     private String name;
 
@@ -29,6 +29,9 @@ public class Item {
         this.quality = quality;
     }
 
+    //Actualiza el sellIn y el quality dependiendo de las reglas del item
+    public abstract void update();
+
     /**
      * Devuelve la representación en texto del ítem.
      *
@@ -37,5 +40,22 @@ public class Item {
     @Override
     public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;
+    }
+    protected void decreaseSellIn(){
+        this.sellIn = this.sellIn - 1;
+    }
+    protected void increaseQuality(){
+        if (this.quality < 50){
+            this.quality = this.quality + 1;
+        }
+    }
+    protected void decreaseQuality(){
+        decreaseQualityBy(1);
+    }
+    protected void decreaseQualityBy(int amount){
+        this.quality = Math.max(0, this.quality - amount);
+    }
+    protected void resetQuality(){
+        this.quality = 0;
     }
 }
