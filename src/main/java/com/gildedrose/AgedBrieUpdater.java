@@ -16,7 +16,7 @@ class AgedBrieUpdater implements ItemUpdater {
         UpdaterSupport.increaseQuality(item);
         UpdaterSupport.decreaseSellIn(item);
 
-        if (item.sellIn < 0) {
+        if (item.getSellIn() < 0) {
             UpdaterSupport.increaseQuality(item);
         }
     }

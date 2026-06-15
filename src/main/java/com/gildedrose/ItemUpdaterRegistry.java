@@ -19,15 +19,15 @@ final class ItemUpdaterRegistry {
      * @return updater correspondiente o el updater por defecto
      */
     ItemUpdater resolve(Item item) {
-        if (item.name == null) {
+        if (item.getName() == null) {
             return NORMAL_UPDATER;
         }
 
-        if (item.name.startsWith(ItemNames.CONJURED_PREFIX)) {
+        if (item.getName().startsWith(ItemNames.CONJURED_PREFIX)) {
             return CONJURED_UPDATER;
         }
 
-        ItemUpdater updater = UPDATERS_BY_NAME.get(item.name);
+        ItemUpdater updater = UPDATERS_BY_NAME.get(item.getName());
         if (updater != null) {
             return updater;
         }

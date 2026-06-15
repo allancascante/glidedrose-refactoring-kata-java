@@ -19,7 +19,7 @@ final class UpdaterSupport {
      * @param item ítem a modificar
      */
     static void decreaseSellIn(Item item) {
-        item.sellIn = item.sellIn - 1;
+        item.setSellIn(item.getSellIn() - 1);
     }
 
     /**
@@ -28,8 +28,8 @@ final class UpdaterSupport {
      * @param item ítem a modificar
      */
     static void increaseQuality(Item item) {
-        if (item.quality < MAX_QUALITY) {
-            item.quality = item.quality + 1;
+        if (item.getQuality() < MAX_QUALITY) {
+            item.setQuality(item.getQuality() + 1);
         }
     }
 
@@ -49,7 +49,7 @@ final class UpdaterSupport {
      * @param amount cantidad de decremento
      */
     static void decreaseQualityBy(Item item, int amount) {
-        item.quality = Math.max(MIN_QUALITY, item.quality - amount);
+        item.setQuality(Math.max(MIN_QUALITY, item.getQuality() - amount));
     }
 
     /**
@@ -58,6 +58,6 @@ final class UpdaterSupport {
      * @param item ítem a modificar
      */
     static void resetQuality(Item item) {
-        item.quality = MIN_QUALITY;
+        item.setQuality(MIN_QUALITY);
     }
 }

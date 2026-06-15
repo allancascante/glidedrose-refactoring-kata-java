@@ -227,9 +227,9 @@ class GildedRoseTest {
      * @param expectedQuality calidad esperada
      */
     private void assertItemState(Item item, String expectedName, int expectedSellIn, int expectedQuality) {
-        assertEquals(expectedName, item.name);
-        assertEquals(expectedSellIn, item.sellIn);
-        assertEquals(expectedQuality, item.quality);
+        assertEquals(expectedName, item.getName());
+        assertEquals(expectedSellIn, item.getSellIn());
+        assertEquals(expectedQuality, item.getQuality());
     }
 
 }
