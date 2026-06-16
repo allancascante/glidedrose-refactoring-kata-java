@@ -78,7 +78,7 @@ Esta sección documenta los principales problemas de mantenibilidad en `GildedRo
 5. **Introducir jerarquía de clases con herencia**
     - Se reemplaza el patrón Strategy (`ItemUpdater` + `ItemUpdaterRegistry`) por herencia sobre `Item`.
     - `Item` se convierte en clase abstracta con método `update()` abstracto y métodos protegidos de dominio: `increaseQuality`, `decreaseQuality`, `decreaseQualityBy`, `decreaseSellIn`, `resetQuality`.
-    - Los campos `name`, `sellIn` y `quality` pasan de `public` a `protected` para que las subclases los accedan directamente.
+    - Los campos `name`, `sellIn` y `quality` pasan de `public` a `private`, expuestos mediante getters y setters generados por Lombok (`@Getter` `@Setter`). Las subclases acceden a ellos a través de los métodos heredados.
     - Se crean cinco subclases concretas, cada una con su lógica encapsulada:
         - `NormalItem` — quality baja 1 por día, 2 al vencer.
         - `AgedBrie` — quality sube con el tiempo, el doble al vencer.
@@ -88,16 +88,6 @@ Esta sección documenta los principales problemas de mantenibilidad en `GildedRo
     - `GildedRose.updateQuality()` se simplifica a un loop que llama `item.update()` sin necesidad de resolver un updater externo.
     - Se eliminan: `ItemUpdater`, `ItemUpdaterRegistry`, `NormalItemUpdater`, `AgedBrieUpdater`, `BackstagePassUpdater`, `SulfurasUpdater`, `ConjuredItemUpdater` y `UpdaterSupport`.
     - Los tests se actualizan para construir instancias con las subclases correspondientes en lugar de `new Item(...)`.
-
-Diagrama de jerarquía:
-```
-Item (abstract)
-├── NormalItem
-├── AgedBrie
-├── BackstagePass
-├── Sulfuras
-└── ConjuredItem
-```
 
 Diagrama de jerarquía:
 ```
