@@ -7,6 +7,6 @@ public class Sulfuras extends Item {
 
     @Override
     public void update() {
-        this.quality = 80; // legendario, no cambia
+        setQuality(80);
     }
 }

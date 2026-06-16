@@ -8,7 +8,7 @@ public class NormalItem extends Item {
     public void update(){
         decreaseQuality();
         decreaseSellIn();
-        if (this.sellIn < 0){
+        if (getSellIn() < 0){
             decreaseQuality();
         }
     }

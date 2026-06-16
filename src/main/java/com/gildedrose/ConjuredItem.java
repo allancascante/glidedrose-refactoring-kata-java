@@ -11,7 +11,7 @@ public class ConjuredItem extends Item {
     public void update() {
         decreaseQualityBy(DEGRADATION);
         decreaseSellIn();
-        if (this.sellIn < 0) {
+        if (getSellIn() < 0) {
             decreaseQualityBy(DEGRADATION);
         }
     }

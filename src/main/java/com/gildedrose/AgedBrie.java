@@ -9,7 +9,7 @@ public class AgedBrie extends Item {
     public void update() {
         increaseQuality();
         decreaseSellIn();
-        if (this.sellIn < 0) {
+        if (getSellIn() < 0) {
             increaseQuality();
         }
     }
