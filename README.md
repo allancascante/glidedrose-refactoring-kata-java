@@ -99,5 +99,14 @@ Item (abstract)
 └── ConjuredItem
 ```
 
+Diagrama de jerarquía:
+```
+Item (abstract)
+├── NormalItem
+├── AgedBrie
+├── BackstagePass
+├── Sulfuras
+└── ConjuredItem
+```
 ### Referencias
 Tomado de https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/main/Java
