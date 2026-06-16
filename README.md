@@ -75,9 +75,29 @@ Esta sección documenta los principales problemas de mantenibilidad en `GildedRo
     - Actualizar las pruebas para que usen los nombres registrados solamente.
     - Crear pruebas para proteger la implementacion de la clase con el registry. 
 
-5. **Mejorar la encapsulación de `Item`** TBD
-    - Hacer los campos privados y exponer comportamiento/getters controlados.
-    - Proteger invariantes dentro de `Item` o en métodos de dominio dedicados.
+5. **Introducir jerarquía de clases con herencia**
+    - Se reemplaza el patrón Strategy (`ItemUpdater` + `ItemUpdaterRegistry`) por herencia sobre `Item`.
+    - `Item` se convierte en clase abstracta con método `update()` abstracto y métodos protegidos de dominio: `increaseQuality`, `decreaseQuality`, `decreaseQualityBy`, `decreaseSellIn`, `resetQuality`.
+    - Los campos `name`, `sellIn` y `quality` pasan de `public` a `protected` para que las subclases los accedan directamente.
+    - Se crean cinco subclases concretas, cada una con su lógica encapsulada:
+        - `NormalItem` — quality baja 1 por día, 2 al vencer.
+        - `AgedBrie` — quality sube con el tiempo, el doble al vencer.
+        - `BackstagePass` — quality sube según proximidad al evento, cae a 0 al pasar.
+        - `Sulfuras` — ítem legendario, no cambia con el tiempo.
+        - `ConjuredItem` — quality baja al doble de velocidad que un ítem normal.
+    - `GildedRose.updateQuality()` se simplifica a un loop que llama `item.update()` sin necesidad de resolver un updater externo.
+    - Se eliminan: `ItemUpdater`, `ItemUpdaterRegistry`, `NormalItemUpdater`, `AgedBrieUpdater`, `BackstagePassUpdater`, `SulfurasUpdater`, `ConjuredItemUpdater` y `UpdaterSupport`.
+    - Los tests se actualizan para construir instancias con las subclases correspondientes en lugar de `new Item(...)`.
+
+Diagrama de jerarquía:
+```
+Item (abstract)
+├── NormalItem
+├── AgedBrie
+├── BackstagePass
+├── Sulfuras
+└── ConjuredItem
+```
 
 ### Referencias
 Tomado de https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/main/Java

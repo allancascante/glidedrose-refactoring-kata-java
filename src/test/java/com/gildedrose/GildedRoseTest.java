@@ -15,7 +15,7 @@ class GildedRoseTest {
      */
     @Test
     void normalItem_beforeSellDate_decreasesSellInAndQualityByOne() {
-        Item[] items = new Item[] { new Item("+5 Dexterity Vest", 10, 20) };
+        Item[] items = new Item[] { new NormalItem("+5 Dexterity Vest", 10, 20) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -28,7 +28,7 @@ class GildedRoseTest {
      */
     @Test
     void normalItem_afterSellDate_decreasesQualityByTwo() {
-        Item[] items = new Item[] { new Item("Elixir of the Mongoose", 0, 7) };
+        Item[] items = new Item[] { new NormalItem("Elixir of the Mongoose", 0, 7) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -41,7 +41,7 @@ class GildedRoseTest {
      */
     @Test
     void normalItem_qualityNeverNegative() {
-        Item[] items = new Item[] { new Item("foo", 5, 0) };
+        Item[] items = new Item[] { new NormalItem("foo", 5, 0) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -54,7 +54,7 @@ class GildedRoseTest {
      */
     @Test
     void agedBrie_beforeSellDate_increasesQualityByOne() {
-        Item[] items = new Item[] { new Item(ItemNames.AGED_BRIE, 2, 0) };
+        Item[] items = new Item[] { new AgedBrie(2, 0) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -67,7 +67,7 @@ class GildedRoseTest {
      */
     @Test
     void agedBrie_afterSellDate_increasesQualityByTwo() {
-        Item[] items = new Item[] { new Item(ItemNames.AGED_BRIE, 0, 10) };
+        Item[] items = new Item[] { new AgedBrie(0, 10) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -80,7 +80,7 @@ class GildedRoseTest {
      */
     @Test
     void agedBrie_qualityCappedAtFifty() {
-        Item[] items = new Item[] { new Item(ItemNames.AGED_BRIE, 2, 50) };
+        Item[] items = new Item[] { new AgedBrie(2, 50) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -93,7 +93,7 @@ class GildedRoseTest {
      */
     @Test
     void sulfuras_neverChanges() {
-        Item[] items = new Item[] { new Item(ItemNames.SULFURAS, 0, 80) };
+        Item[] items = new Item[] { new Sulfuras(0) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -106,7 +106,7 @@ class GildedRoseTest {
      */
     @Test
     void sulfuras_qualityAlwaysEighty() {
-        Item[] items = new Item[] { new Item(ItemNames.SULFURAS, 5, 10) };
+        Item[] items = new Item[] { new Sulfuras(5) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -119,7 +119,7 @@ class GildedRoseTest {
      */
     @Test
     void backstagePass_moreThanTenDays_increasesQualityByOne() {
-        Item[] items = new Item[] { new Item(ItemNames.BACKSTAGE_PASSES, 15, 20) };
+        Item[] items = new Item[] { new BackstagePass(15, 20) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -132,7 +132,7 @@ class GildedRoseTest {
      */
     @Test
     void backstagePass_tenDaysOrLess_increasesQualityByTwo() {
-        Item[] items = new Item[] { new Item(ItemNames.BACKSTAGE_PASSES, 10, 20) };
+        Item[] items = new Item[] { new BackstagePass(10, 20) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -145,7 +145,7 @@ class GildedRoseTest {
      */
     @Test
     void backstagePass_fiveDaysOrLess_increasesQualityByThree() {
-        Item[] items = new Item[] { new Item(ItemNames.BACKSTAGE_PASSES, 5, 20) };
+        Item[] items = new Item[] { new BackstagePass(5, 20) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -158,7 +158,7 @@ class GildedRoseTest {
      */
     @Test
     void backstagePass_afterConcert_qualityDropsToZero() {
-        Item[] items = new Item[] { new Item(ItemNames.BACKSTAGE_PASSES, 0, 20) };
+        Item[] items = new Item[] { new BackstagePass(0, 20) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -171,7 +171,7 @@ class GildedRoseTest {
      */
     @Test
     void backstagePass_qualityCappedAtFifty() {
-        Item[] items = new Item[] { new Item(ItemNames.BACKSTAGE_PASSES, 5, 49) };
+        Item[] items = new Item[] { new BackstagePass(5, 49) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -184,7 +184,7 @@ class GildedRoseTest {
      */
     @Test
     void conjuredItem_beforeSellDate_degradesTwiceAsFastAsNormalItem() {
-        Item[] items = new Item[] { new Item(CONJURED_MANA_CAKE, 3, 6) };
+        Item[] items = new Item[] { new ConjuredItem(CONJURED_MANA_CAKE, 3, 6) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -197,7 +197,7 @@ class GildedRoseTest {
      */
     @Test
     void conjuredItem_afterSellDate_degradesTwiceAsFastAgain() {
-        Item[] items = new Item[] { new Item(CONJURED_MANA_CAKE, 0, 6) };
+        Item[] items = new Item[] { new ConjuredItem(CONJURED_MANA_CAKE, 0, 6) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -210,7 +210,7 @@ class GildedRoseTest {
      */
     @Test
     void conjuredItem_qualityNeverNegative() {
-        Item[] items = new Item[] { new Item(CONJURED_MANA_CAKE, 0, 3) };
+        Item[] items = new Item[] { new ConjuredItem(CONJURED_MANA_CAKE, 0, 3) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
