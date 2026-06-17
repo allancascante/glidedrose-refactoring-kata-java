@@ -1,8 +1,10 @@
 package com.gildedrose;
 
 public class Sulfuras extends Item {
+    public static final String NAME = "Sulfuras, Hand of Ragnaros";
+
     public Sulfuras(int sellIn) {
-        super(ItemNames.SULFURAS, sellIn, 80);
+        super(NAME, sellIn, 80);
     }
 
     @Override

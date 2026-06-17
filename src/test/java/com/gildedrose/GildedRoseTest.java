@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * Pruebas de comportamiento para validar los requerimientos de Gilded Rose.
  */
 class GildedRoseTest {
-    private static final String CONJURED_MANA_CAKE = ItemNames.CONJURED_PREFIX + " Mana Cake";
+    private static final String CONJURED_MANA_CAKE = ConjuredItem.PREFIX + " Mana Cake";
 
     /**
      * Verifica que un ítem normal reduzca sellIn y quality en 1 antes de vencer.
@@ -59,7 +59,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        assertItemState(items[0], ItemNames.AGED_BRIE, 1, 1);
+        assertItemState(items[0], AgedBrie.NAME, 1, 1);
     }
 
     /**
@@ -72,7 +72,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        assertItemState(items[0], ItemNames.AGED_BRIE, -1, 12);
+        assertItemState(items[0], AgedBrie.NAME, -1, 12);
     }
 
     /**
@@ -85,7 +85,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        assertItemState(items[0], ItemNames.AGED_BRIE, 1, 50);
+        assertItemState(items[0], AgedBrie.NAME, 1, 50);
     }
 
     /**
@@ -98,7 +98,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        assertItemState(items[0], ItemNames.SULFURAS, 0, 80);
+        assertItemState(items[0], Sulfuras.NAME, 0, 80);
     }
 
     /**
@@ -111,7 +111,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        assertItemState(items[0], ItemNames.SULFURAS, 5, 80);
+        assertItemState(items[0], Sulfuras.NAME, 5, 80);
     }
 
     /**
@@ -124,7 +124,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        assertItemState(items[0], ItemNames.BACKSTAGE_PASSES, 14, 21);
+        assertItemState(items[0], BackstagePass.NAME, 14, 21);
     }
 
     /**
@@ -137,7 +137,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        assertItemState(items[0], ItemNames.BACKSTAGE_PASSES, 9, 22);
+        assertItemState(items[0], BackstagePass.NAME, 9, 22);
     }
 
     /**
@@ -150,7 +150,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        assertItemState(items[0], ItemNames.BACKSTAGE_PASSES, 4, 23);
+        assertItemState(items[0], BackstagePass.NAME, 4, 23);
     }
 
     /**
@@ -163,7 +163,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        assertItemState(items[0], ItemNames.BACKSTAGE_PASSES, -1, 0);
+        assertItemState(items[0], BackstagePass.NAME, -1, 0);
     }
 
     /**
@@ -176,7 +176,7 @@ class GildedRoseTest {
 
         app.updateQuality();
 
-        assertItemState(items[0], ItemNames.BACKSTAGE_PASSES, 4, 50);
+        assertItemState(items[0], BackstagePass.NAME, 4, 50);
     }
 
     /**

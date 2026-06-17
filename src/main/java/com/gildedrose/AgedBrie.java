@@ -1,8 +1,10 @@
 package com.gildedrose;
 
 public class AgedBrie extends Item {
+    public static final String NAME = "Aged Brie";
+
     public AgedBrie(int sellIn, int quality) {
-        super(ItemNames.AGED_BRIE, sellIn, quality);
+        super(NAME, sellIn, quality);
     }
 
     @Override
