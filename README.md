@@ -1,6 +1,12 @@
 # Practica guiada - refactorizacion GlidedRose 
 # Universidad cenfotec 
-# Allan Cascante Valverde 
+
+# Earl Alvarado Cabrera
+# Allan Cascante Valverde
+# Fabián Montero Madrigal
+# Silvia Rodríguez Fernández
+# Isaac Rojas Hernández
+
 # Curso: PSWE-03 - Construcción y Mantenimiento de Software 
 
 
