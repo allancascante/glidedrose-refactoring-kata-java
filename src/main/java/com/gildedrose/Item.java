@@ -11,6 +11,7 @@ import lombok.Setter;
 public abstract class Item {
 
     public static final int MIN_QUALITY = 0;
+    public static final int MAX_QUALITY = 50;
 
     private String name;
 
@@ -47,7 +48,7 @@ public abstract class Item {
         this.sellIn = this.sellIn - 1;
     }
     protected void increaseQuality(){
-        if (this.quality < 50){
+        if (this.quality < MAX_QUALITY){
             this.quality = this.quality + 1;
         }
     }
