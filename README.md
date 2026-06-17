@@ -71,7 +71,7 @@ Esta sección documenta los principales problemas de mantenibilidad en `GildedRo
 4. **Reducir el acoplamiento por strings**
     - Mapear el nombre del ítem a un objeto de regla en un solo lugar usando el patron registry y hacer los updaters static para evitar la prolifelacion de objectos cuando realmente el estado de estos no es requerido.
     - Mantener nombres desconocidos bajo una regla por defecto.
-    - Encapsular los nombres en una clase propia como attributos estaticos. 
+    - Encapsular los nombres canónicos para evitar strings repetidos.
     - Actualizar las pruebas para que usen los nombres registrados solamente.
     - Crear pruebas para proteger la implementacion de la clase con el registry. 
 
@@ -85,6 +85,7 @@ Esta sección documenta los principales problemas de mantenibilidad en `GildedRo
         - `BackstagePass` — quality sube según proximidad al evento, cae a 0 al pasar.
         - `Sulfuras` — ítem legendario, no cambia con el tiempo.
         - `ConjuredItem` — quality baja al doble de velocidad que un ítem normal.
+    - Los nombres canónicos de ítems especiales se mueven a la subclase correspondiente (`AgedBrie.NAME`, `BackstagePass.NAME`, `Sulfuras.NAME`) para mejorar cohesión y eliminar la clase utilitaria `ItemNames`.
     - `GildedRose.updateQuality()` se simplifica a un loop que llama `item.update()` sin necesidad de resolver un updater externo.
     - Se eliminan: `ItemUpdater`, `ItemUpdaterRegistry`, `NormalItemUpdater`, `AgedBrieUpdater`, `BackstagePassUpdater`, `SulfurasUpdater`, `ConjuredItemUpdater` y `UpdaterSupport`.
     - Los tests se actualizan para construir instancias con las subclases correspondientes en lugar de `new Item(...)`.
